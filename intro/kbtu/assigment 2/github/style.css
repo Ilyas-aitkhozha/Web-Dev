@@ -1,0 +1,405 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: #111;
+    background: #fff;
+}
+
+.container{
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.hero{
+    padding: 90px 0 70px;
+    text-align: center;
+}
+
+.hero-title{
+    margin: 0;
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.hero-text{
+    margin: 18px auto 0;
+    max-width: 780px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: background-color .2s ease, border-color .2s ease, transform .05s ease;
+}
+
+.btn--primary{
+    background: #1f2328;
+    color: #fff;
+}
+
+.btn--primary:hover{
+    background: #2b3137;
+}
+
+.btn--primary:active{
+    transform: translateY(1px);
+}
+
+.btn:focus-visible{
+    outline: 3px solid rgba(9,105,218,0.35);
+    outline-offset: 3px;
+}
+
+/* 1 breakpoint */
+@media (max-width: 768px){
+    .hero{
+        padding: 60px 0 50px;
+    }
+
+    .hero-title{
+        font-size: 36px;
+    }
+
+    .hero-text{
+        font-size: 16px;
+    }
+}
+
+/* утилита чтобы спрятать заголовок, но оставить для доступности */
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* PRICING LAYOUT */
+.pricing{
+    padding: 40px 0 80px;
+}
+
+.pricing-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    align-items: stretch;
+}
+
+/* CARD */
+.plan{
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 720px;
+}
+
+.plan__top{
+    padding: 26px 26px 22px;
+    text-align: center;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.plan__name{
+    margin: 0;
+    font-size: 34px;
+    letter-spacing: -0.02em;
+}
+
+.plan__desc{
+    margin: 10px 0 0;
+    color: #57606a;
+    line-height: 1.35;
+}
+
+.price{
+    margin: 18px 0 18px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    color: #0d1117;
+}
+
+.price__currency{
+    font-size: 22px;
+    color: #57606a;
+}
+
+.price__value{
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.price__unit{
+    font-weight: 700;
+}
+
+.price__per{
+    color: #57606a;
+    margin-left: 6px;
+}
+
+/* кнопки */
+.btn--block{ width: 100%; }
+
+.btn-row{
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.btn-row .btn{
+    flex: 1;
+}
+
+.btn--outline{
+    background: #fff;
+    border: 1px solid #d0d7de;
+    color: #0d1117;
+}
+
+.btn--outline:hover{
+    background: #f6f8fa;
+}
+
+/* body part */
+.plan__body{
+    padding: 18px 26px 24px;
+    flex: 1;
+}
+
+.feature-list,
+.addon-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li,
+.addon-list li{
+    padding: 10px 0 10px 22px;
+    border-top: 1px solid #f0f2f4;
+    position: relative;
+    color: #24292f;
+    line-height: 1.35;
+}
+
+/* стрелочка слева как в гитхабе (упрощенно) */
+.feature-list li::before,
+.addon-list li::before{
+    content: "›";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #57606a;
+    font-size: 18px;
+}
+
+/* маленький серый текст под пунктом */
+.muted{
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #6e7781;
+}
+
+.addon-title{
+    margin: 18px 0 8px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: #0969da; /* синий заголовок */
+}
+
+.addon-title--blue{
+    color: #0969da;
+}
+
+/* поднятая средняя карточка чуть выше (как на скрине) */
+.plan--raised{
+    transform: translateY(-10px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+
+/* enterprise выделение синей рамкой */
+.plan--enterprise{
+    border: 3px solid #0969da;
+}
+
+/* pill "Starting at" */
+.pill{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid #d0d7de;
+    color: #57606a;
+    background: #fff;
+}
+
+/* responsive: 1 breakpoint */
+@media (max-width: 900px){
+    .pricing-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .plan--raised{
+        transform: none;
+    }
+
+    .btn-row{
+        flex-direction: column;
+    }
+}
+/* ADD-ONS */
+.addons{
+    padding: 70px 0 90px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* лёгкая дымка/градиент сверху как на скрине */
+.addons::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -260px;
+    transform: translateX(-50%);
+    width: 1400px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(0,0,0,0.07), rgba(0,0,0,0) 60%);
+    pointer-events: none;
+}
+
+.addons .container{
+    position: relative;
+}
+
+.addons__title{
+    margin: 0 0 34px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-size: clamp(40px, 5.6vw, 78px);
+}
+
+.addons-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.addon-card{
+    position: relative;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 14px;
+    padding: 26px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.addon-card:hover{
+        cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+}
+
+.addon-card__icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    background: #f6f8fa;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* цвета кружков (похоже на скрин) */
+.addon-card__icon--purple{ background: rgba(130,80,223,0.12); }
+.addon-card__icon--green{  background: rgba(34,197,94,0.12); }
+.addon-card__icon--blue{   background: rgba(56,189,248,0.16); }
+.addon-card__icon--pink{   background: rgba(236,72,153,0.12); }
+.addon-card__icon--orange{ background: rgba(249,115,22,0.14); }
+.addon-card__icon--yellow{ background: rgba(234,179,8,0.16); }
+
+.addon-card__title{
+    margin: 0 0 10px;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+}
+
+.addon-card__text{
+    margin: 0 0 20px;
+    color: #57606a;
+    line-height: 1.6;
+}
+
+.addon-card__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #0d1117;
+    text-decoration: none;
+}
+
+.addon-card__link:hover{
+    text-decoration: underline;
+}
+
+.addon-card__badge{
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(34,197,94,0.6);
+    color: #146c2e;
+    background: #fff;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* responsive: 1 breakpoint */
+@media (max-width: 900px){
+    .addons-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .addons{
+        padding: 55px 0 70px;
+    }
+
+    .addons__title{
+        margin-bottom: 22px;
+    }
+}
+

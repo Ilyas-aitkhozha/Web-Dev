@@ -1,18 +1,8 @@
-import {Component} from '@angular/core';
-import {ReversePipe} from './reverse.pipe';
-
-@Component({
-  selector: 'app-root',
-  template: ` Reverse Machine: {{ word | reverse }} `,
-  imports: [ReversePipe],
-})
-export class App {
-  word = 'You are a champion';
-}
-import {Pipe, PipeTransform} from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'reverse',
+  standalone: true,
 })
 export class ReversePipe implements PipeTransform {
   transform(value: string): string {
@@ -24,4 +14,14 @@ export class ReversePipe implements PipeTransform {
 
     return reverse;
   }
+}
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ReversePipe],
+  template: `Reverse Machine: {{ word | reverse }}`,
+})
+export class App {
+  word = 'You are a champion';
 }

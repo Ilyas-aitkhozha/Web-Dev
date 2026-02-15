@@ -1,0 +1,46 @@
+<div class="card" *ngIf="product">
+  <a class="img-box" [routerLink]="['/products', product.id]">
+    <img
+      *ngIf="imgOk; else placeholder"
+      class="main-img"
+      [src]="selectedImage"
+      [alt]="product.name"
+      (error)="onImgError()"
+    >
+    <ng-template #placeholder>
+      <div class="placeholder">No image</div>
+    </ng-template>
+  </a>
+
+  <div class="thumbs">
+    <button
+      class="thumb"
+      type="button"
+      *ngFor="let img of product.images"
+      (click)="setImage(img)"
+      [class.active]="img === selectedImage"
+      aria-label="Select image">
+      <img [src]="img" [alt]="product.name">
+    </button>
+  </div>
+
+  <div class="body">
+    <h3 class="title">{{ product.name }}</h3>
+    <p class="desc">{{ product.description }}</p>
+
+    <div class="meta">
+      <span class="price">{{ product.price }} ₸</span>
+      <span class="rating">⭐ {{ product.rating }}</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn secondary" [routerLink]="['/products', product.id]">View details</a>
+      <a class="btn" [href]="product.link" target="_blank" rel="noopener">Open on Kaspi</a>
+    </div>
+
+    <div class="share">
+      <a class="share-btn" [href]="whatsappShareLink()" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="share-btn" [href]="telegramShareLink()" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 50px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #111827, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #2563eb, #111827);
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

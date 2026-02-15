@@ -1,0 +1,15 @@
+<div class="page">
+  <header class="header">
+    <h1 class="logo">Online Store</h1>
+    <p class="subtitle">Premium Tech Marketplace</p>
+  </header>
+
+  <h2 class="section-title">Products</h2>
+
+  <div class="grid">
+    <app-product-card
+      *ngFor="let p of products"
+      [product]="p">
+    </app-product-card>
+  </div>
+</div>

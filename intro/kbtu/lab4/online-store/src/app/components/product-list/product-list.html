@@ -1,15 +1,40 @@
 <div class="page">
-  <header class="header">
-    <h1 class="logo">Online Store</h1>
-    <p class="subtitle">Premium Tech Marketplace</p>
-  </header>
+  <div class="hero">
+    <div class="hero-inner">
+      <h1 class="title">Online Store</h1>
+      <p class="subtitle">Kaspi.kz products catalog</p>
 
-  <h2 class="section-title">Products</h2>
+      <div class="search">
+        <label class="label" for="search">Search products</label>
+        <input
+          id="search"
+          type="text"
+          class="input"
+          placeholder="Search by product name..."
+          [(ngModel)]="searchQuery"
+          (input)="filterProducts()"
+        />
+      </div>
 
-  <div class="grid">
-    <app-product-card
-      *ngFor="let p of products"
-      [product]="p">
-    </app-product-card>
+      <div class="count">
+        Showing: <b>{{ filteredProducts.length }}</b> / {{ products.length }} products
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="grid" *ngIf="filteredProducts.length > 0; else empty">
+      <app-product-card
+        *ngFor="let product of filteredProducts"
+        [product]="product"
+      ></app-product-card>
+    </div>
+
+    <ng-template #empty>
+      <div class="empty">
+        <div class="empty-title">No products found</div>
+        <div class="empty-sub">Try another name (example: iPhone, Xiaomi, SSD)</div>
+      </div>
+    </ng-template>
   </div>
 </div>

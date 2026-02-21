@@ -10,11 +10,19 @@
 </header>
 
 <main class="main">
-  <form class="todo-form" onsubmit="return false;">
+  <form class="todo-form" id="todoForm">
     <label for="todoInput">New task</label>
+
     <div class="form-row">
-      <input id="todoInput" type="text" />
-      <button id="addButton" type="button">Add</button>
+      <input id="todoInput" type="text"/>
+
+      <button id="addButton" type="submit">Add</button>
+    </div>
+
+    <div class="filters" id="filterGroup">
+      <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="active">Active</button>
+      <button type="button" class="filter-btn" data-filter="completed">Completed</button>
     </div>
   </form>
 

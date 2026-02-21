@@ -1,0 +1,95 @@
+.page {
+  min-height: 100vh;
+  background: #f6f7fb;
+}
+
+.hero {
+  background: linear-gradient(135deg, #111827, #3b82f6);
+  color: white;
+  padding: 40px 16px;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  opacity: 0.9;
+}
+
+.search {
+  margin-top: 22px;
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+}
+
+.label {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.35);
+  outline: none;
+  font-size: 16px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+}
+
+.input::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+
+.input:focus {
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.14);
+}
+
+.count {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.content {
+  max-width: 1100px;
+  margin: -20px auto 0;
+  padding: 0 16px 40px;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+.empty {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.empty-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.empty-sub {
+  margin-top: 6px;
+  color: #6b7280;
+}

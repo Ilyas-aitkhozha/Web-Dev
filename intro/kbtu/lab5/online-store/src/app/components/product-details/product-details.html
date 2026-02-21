@@ -1,0 +1,37 @@
+<a class="back" routerLink="/products">← Back to products</a>
+
+<div *ngIf="product; else notFound" class="container">
+  <div class="left">
+    <div class="big-box">
+      <img class="big" [src]="selectedImage" [alt]="product.name">
+    </div>
+
+    <div class="thumbs">
+      <button
+        class="thumb"
+        type="button"
+        *ngFor="let img of product.images"
+        (click)="setImage(img)">
+        <img [src]="img" [alt]="product.name">
+      </button>
+    </div>
+  </div>
+
+  <div class="right">
+    <h2 class="title">{{ product.name }}</h2>
+    <p class="desc">{{ product.description }}</p>
+
+    <div class="price-block">
+      <div class="price">{{ product.price }} ₸</div>
+      <div class="rating">⭐ {{ product.rating }}</div>
+    </div>
+
+    <a class="btn" [href]="product.link" target="_blank">
+      Open on Kaspi
+    </a>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <p>Product not found.</p>
+</ng-template>

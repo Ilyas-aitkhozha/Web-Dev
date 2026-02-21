@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="img-box">
+    @if (imgOk) {
+      <img
+        class="main-img"
+        [src]="mainImage"
+        [alt]="product().name"
+        (error)="onImgError()"
+      />
+    } @else {
+      <div class="placeholder">No image</div>
+    }
+  </div>
+
+  <div class="thumbs">
+    @for (img of product().images; track img) {
+      <button
+        class="thumb"
+        type="button"
+        (click)="setImage(img)"
+        [class.active]="img === selectedImage"
+        aria-label="Select image"
+      >
+        <img [src]="img" [alt]="product().name" />
+      </button>
+    }
+  </div>
+
+  <div class="body">
+    <h3 class="title">{{ product().name }}</h3>
+    <p class="desc">{{ product().description }}</p>
+
+    <div class="meta">
+      <span class="price">{{ product().price }} ₸</span>
+      <span class="rating">⭐ {{ product().rating }}</span>
+      <span class="likes">❤️ {{ product().likes }}</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn secondary" type="button" (click)="like()">Like</button>
+      <button class="btn danger" type="button" (click)="remove()">Delete</button>
+      <a class="btn" [href]="product().link" target="_blank" rel="noopener">Open on Kaspi</a>
+    </div>
+
+    <div class="share">
+      <a class="share-btn" [href]="whatsappShareLink()" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="share-btn" [href]="telegramShareLink()" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-# Online Store (Lab 4 Task 2)
+# Online Store (Lab 5)
 
 ## How to run
 1) npm install

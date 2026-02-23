@@ -11,7 +11,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     image: 'images/kingston.jpg',
     images: ['images/kingston1.jpg', 'images/kingston2.jpg', 'images/kingston3.jpg'],
-    link: 'https://kaspi.kz/shop/p/ssd-kingston-sa400s37-480g-480-gb-6800659/'
+    link: 'https://kaspi.kz/shop/p/ssd-kingston-sa400s37-480g-480-gb-6800659/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -23,7 +24,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/klava.jpg',
     images: ['images/klava1.jpg', 'images/klava2.jpg', 'images/klava3.jpg'],
-    link: 'https://kaspi.kz/shop/p/ultra-s-ultkb02-2-serii-146337554/'
+    link: 'https://kaspi.kz/shop/p/ultra-s-ultkb02-2-serii-146337554/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -35,7 +37,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     image: 'images/iphone.jpg',
     images: ['images/iphone1.jpg', 'images/iphone2.jpg', 'images/iphone3.jpg'],
-    link: 'https://kaspi.kz/shop/p/apple-iphone-17-pro-256gb-temno-sinii-145438959/'
+    link: 'https://kaspi.kz/shop/p/apple-iphone-17-pro-256gb-temno-sinii-145438959/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -47,7 +50,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.5,
     image: 'images/case.jpg',
     images: ['images/case1.jpg', 'images/case2.jpg', 'images/case3.jpg'],
-    link: 'https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-17-pro-max-prozrachnyi-145825236/'
+    link: 'https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-17-pro-max-prozrachnyi-145825236/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -59,7 +63,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     image: 'images/band.jpg',
     images: ['images/band1.jpg', 'images/band2.jpg', 'images/band3.jpg'],
-    link: 'https://kaspi.kz/shop/p/xiaomi-smart-band-10-chernyi-141530632/'
+    link: 'https://kaspi.kz/shop/p/xiaomi-smart-band-10-chernyi-141530632/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -71,7 +76,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/iqos.jpg',
     images: ['images/iqos1.jpg', 'images/iqos2.jpg', 'images/iqos3.jpg'],
-    link: 'https://kaspi.kz/shop/p/iqos-iluma-i-one-goluboi-145958994/'
+    link: 'https://kaspi.kz/shop/p/iqos-iluma-i-one-goluboi-145958994/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -83,7 +89,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.4,
     image: 'images/lumo.jpg',
     images: ['images/lumo1.jpg', 'images/lumo2.jpg', 'images/lumo3.jpg'],
-    link: 'https://kaspi.kz/shop/p/lumo-aqua-x-seryi-148897809/'
+    link: 'https://kaspi.kz/shop/p/lumo-aqua-x-seryi-148897809/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -95,7 +102,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.3,
     image: 'images/zk.jpg',
     images: ['images/zk1.jpg', 'images/zk2.jpg', 'images/zk3.jpg'],
-    link: 'https://kaspi.kz/shop/p/naushniki-zhang-kai-s25-chernyi-136791864/'
+    link: 'https://kaspi.kz/shop/p/naushniki-zhang-kai-s25-chernyi-136791864/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -107,7 +115,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.5,
     image: 'images/hydra.jpg',
     images: ['images/hydra1.jpg', 'images/hydra2.jpg', 'images/hydra3.jpg'],
-    link: 'https://kaspi.kz/shop/p/naushniki-hydra-home-minor-bezhevyi-120724130/'
+    link: 'https://kaspi.kz/shop/p/naushniki-hydra-home-minor-bezhevyi-120724130/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -119,7 +128,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/tv.jpg',
     images: ['images/tv1.jpg', 'images/tv2.jpg', 'images/tv3.jpg'],
-    link: 'https://kaspi.kz/shop/p/yasin-32e9000-81-sm-chernyi-101748828/'
+    link: 'https://kaspi.kz/shop/p/yasin-32e9000-81-sm-chernyi-101748828/',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -131,7 +141,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/glass.jpg',
     images: ['images/glass1.jpg', 'images/glass2.jpg', 'images/glass3.jpg'],
-    link: 'https://kaspi.kz/shop/p/steklo-dlja-apple-iphone-11-pro-max-chernyi-133402149/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/steklo-dlja-apple-iphone-11-pro-max-chernyi-133402149/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -143,7 +154,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     image: 'images/adapter.jpg',
     images: ['images/adapter1.jpg', 'images/adapter2.jpg', 'images/adapter3.jpg'],
-    link: 'https://kaspi.kz/shop/p/apple-20w-usb-c-power-adapter-belyi-100984093/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/apple-20w-usb-c-power-adapter-belyi-100984093/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -155,7 +167,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     image: 'images/galaxya07.jpg',
     images: ['images/galaxya071.jpg', 'images/galaxya072.jpg', 'images/galaxya073.jpg'],
-    link: 'https://kaspi.kz/shop/p/samsung-galaxy-a07-6-gb-128-gb-chernyi-144817763/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/samsung-galaxy-a07-6-gb-128-gb-chernyi-144817763/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -167,7 +180,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     image: 'images/iphone16.jpg',
     images: ['images/iphone161.jpg', 'images/iphone162.jpg', 'images/iphone163.jpg'],
-    link: 'https://kaspi.kz/shop/p/apple-iphone-16-128gb-chernyi-123713453/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/apple-iphone-16-128gb-chernyi-123713453/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -179,7 +193,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     image: 'images/iphone17pm.jpg',
     images: ['images/iphone17pm1.jpg', 'images/iphone17pm2.jpg', 'images/iphone17pm3.jpg'],
-    link: 'https://kaspi.kz/shop/p/apple-iphone-17-pro-max-256gb-oranzhevyi-145468241/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/apple-iphone-17-pro-max-256gb-oranzhevyi-145468241/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -191,7 +206,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/realme70.jpg',
     images: ['images/realme701.jpg', 'images/realme702.jpg', 'images/realme703.jpg'],
-    link: 'https://kaspi.kz/shop/p/realme-note-70-6-gb-128-gb-chernyi-145564546/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/realme-note-70-6-gb-128-gb-chernyi-145564546/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -203,7 +219,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     image: 'images/redmibuds.jpg',
     images: ['images/redmibuds1.jpg', 'images/redmibuds2.jpg', 'images/redmibuds3.jpg'],
-    link: 'https://kaspi.kz/shop/p/naushniki-xiaomi-redmi-buds-6-play-chernyi-123229678/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/naushniki-xiaomi-redmi-buds-6-play-chernyi-123229678/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -215,7 +232,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     image: 'images/earpods.jpg',
     images: ['images/earpods1.jpg', 'images/earpods2.jpg', 'images/earpods3.jpg'],
-    link: 'https://kaspi.kz/shop/p/naushniki-apple-earpods-usb-c-belyi-114086432/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/naushniki-apple-earpods-usb-c-belyi-114086432/?c=750000000',
+    isFavorite: false,
   },
   {
     likes: 0,
@@ -227,6 +245,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     image: 'images/tv40.jpg',
     images: ['images/tv401.jpg', 'images/tv402.jpg', 'images/tv403.jpg'],
-    link: 'https://kaspi.kz/shop/p/yasin-40e9000-102-sm-chernyi-137978460/?c=750000000'
+    link: 'https://kaspi.kz/shop/p/yasin-40e9000-102-sm-chernyi-137978460/?c=750000000',
+    isFavorite: false,
   },
 ]

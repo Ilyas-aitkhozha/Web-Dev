@@ -16,6 +16,7 @@ import { ProductList } from './components/product-list/product-list';
 export class App {
   categories: Category[] = [];
   products: Product[] = [];
+  favorites: Product[] = [];
 
   selectedCategoryId: number | null = null;
 
@@ -42,5 +43,13 @@ export class App {
 
   handleDelete(productId: number) {
     this.products = this.products.filter(p => p.id !== productId);
+  }
+  toggleFavorite(productId: number): void {
+    const product = this.products.find(p => p.id === productId);
+    if (!product) return;
+
+    product.isFavorite = !product.isFavorite;
+
+    this.favorites = this.products.filter(p => p.isFavorite);
   }
 }

@@ -38,6 +38,9 @@
 
     <div class="actions">
       <button class="btn secondary" type="button" (click)="like()">Like</button>
+      <button class="fav-btn" (click)="onToggleFavorite()">
+        {{ product().isFavorite ? '⭐ Remove' : '⭐ Add to Favorites' }}
+      </button>
       <button class="btn danger" type="button" (click)="remove()">Delete</button>
       <a class="btn" [href]="product().link" target="_blank" rel="noopener">Open on Kaspi</a>
     </div>

@@ -9,6 +9,7 @@
         <app-product-card
           [product]="p"
           (delete)="onDelete($event)"
+          (toggleFavorite)="onToggleFavorite($event)"
         ></app-product-card>
       }
     </div>

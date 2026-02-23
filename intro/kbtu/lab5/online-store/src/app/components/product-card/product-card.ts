@@ -12,11 +12,10 @@ import { Product } from '../../models/product.model';
 export class ProductCard {
   product = input.required<Product>();
   delete = output<number>();
-
+  toggleFavorite = output<number>();
   selectedImage = '';
   imgOk = true;
 
-  // чтобы не усложнять: подставим первую картинку при первом рендере
   get mainImage(): string {
     const p = this.product();
     return this.selectedImage || p.image;
@@ -42,6 +41,9 @@ export class ProductCard {
   whatsappShareLink(): string {
     const text = `Check out this product: ${this.product().link}`;
     return `https://wa.me/?text=${encodeURIComponent(text)}`;
+  }
+  onToggleFavorite(): void {
+    this.toggleFavorite.emit(this.product().id);
   }
 
   telegramShareLink(): string {

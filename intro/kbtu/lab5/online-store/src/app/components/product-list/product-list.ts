@@ -13,11 +13,13 @@ import { ProductCard } from '../product-card/product-card';
 })
 export class ProductList {
   products = input.required<Product[]>();
-
-  // поднимем delete ещё выше в App, чтобы удаление было "навсегда"
+  toggleFavorite = output<number>();
   deleteProduct = output<number>();
 
   onDelete(id: number) {
     this.deleteProduct.emit(id);
+  }
+  onToggleFavorite(id: number) {
+    this.toggleFavorite.emit(id);
   }
 }

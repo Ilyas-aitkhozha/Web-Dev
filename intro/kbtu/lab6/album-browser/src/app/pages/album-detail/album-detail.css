@@ -1,0 +1,35 @@
+.card {
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.label { display: grid; gap: 6px; }
+input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #111;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn.secondary {
+  background: white;
+  color: #111;
+}
+
+.info { padding: 10px 0; opacity: 0.8; }
+.error { padding: 10px 0; color: #b00020; }

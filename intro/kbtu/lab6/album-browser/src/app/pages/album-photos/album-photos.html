@@ -1,0 +1,26 @@
+<h1>Album #{{ albumId }} Photos</h1>
+
+@if (loading) {
+  <div class="info">Loading photos...</div>
+}
+
+@if (error) {
+  <div class="error">{{ error }}</div>
+}
+
+@if (!loading && photos.length === 0) {
+  <div class="info">No photos found.</div>
+}
+
+@if (!loading && photos.length > 0) {
+  <div class="grid">
+    @for (p of photos; track p.id) {
+      <div class="photo">
+        <img [src]="p.thumbnailUrl" [alt]="p.title">
+        <div class="caption">{{ p.title }}</div>
+      </div>
+    }
+  </div>
+}
+
+<a [routerLink]="['/albums', albumId]">Back</a>

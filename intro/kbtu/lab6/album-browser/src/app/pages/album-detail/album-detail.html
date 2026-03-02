@@ -1,21 +1,63 @@
 @if (loading()) {
-  <p>Loading album...</p>
+  <div class="state">
+    <div class="spinner"></div>
+    <p>Loading album...</p>
+  </div>
+
 } @else if (error()) {
-  <p class="error">{{ error() }}</p>
+  <div class="state error">
+    <p class="error-text">{{ error() }}</p>
+  </div>
+
 } @else if (album()) {
-  <h2>Album #{{ album()!.id }}</h2>
-  <p>User ID: {{ album()!.userId }}</p>
 
-  <label>
-    Title:
-    <input [ngModel]="editedTitle()" (ngModelChange)="editedTitle.set($event)" />
-  </label>
+  <div class="page">
+    <div class="card">
+      <div class="card-header">
+        <div class="title-wrap">
+          <h2 class="title">Album #{{ album()!.id }}</h2>
+          <p class="subtitle">
+            User ID: <span class="pill">{{ album()!.userId }}</span>
+          </p>
+        </div>
 
-  <div class="buttons">
-    <button (click)="save()">Save</button>
+        <span class="pill">ID {{ album()!.id }}</span>
+      </div>
 
-    <a [routerLink]="['/albums', album()!.id, 'photos']">View Photos</a>
+      <div class="divider"></div>
 
-    <button (click)="back()">Back</button>
+      <div class="content">
+        <div class="field">
+          <div class="label">Title</div>
+
+          <div class="input-row">
+            <input
+              class="input"
+              [ngModel]="editedTitle()"
+              (ngModelChange)="editedTitle.set($event)"
+              placeholder="Enter album title..."
+            />
+            <div class="hint">{{ editedTitle().length }} chars</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" (click)="save()" [disabled]="saving()">
+            @if (saving()) {
+              <span class="spinner"></span>
+              Saving...
+            } @else {
+              Save
+            }
+          </button>
+
+          <a class="btn secondary" [routerLink]="['/albums', album()!.id, 'photos']">
+            View Photos
+          </a>
+
+          <button class="btn ghost" (click)="back()">Back</button>
+        </div>
+      </div>
+    </div>
   </div>
 }

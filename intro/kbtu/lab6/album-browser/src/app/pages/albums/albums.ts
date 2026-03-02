@@ -19,6 +19,10 @@ export class AlbumsComponent implements OnInit {
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
+    this.load();
+  }
+
+  load(): void {
     this.loading.set(true);
     this.error.set('');
 
@@ -27,7 +31,8 @@ export class AlbumsComponent implements OnInit {
         this.albums.set(data);
         this.loading.set(false);
       },
-      error: () => {
+      error: (err) => {
+        console.log('ALBUMS ERROR:', err);
         this.error.set('Failed to load albums');
         this.loading.set(false);
       },

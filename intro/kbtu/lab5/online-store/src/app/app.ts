@@ -43,6 +43,7 @@ export class App {
 
   handleDelete(productId: number) {
     this.products = this.products.filter(p => p.id !== productId);
+    this.favorites = this.products.filter(p => p.isFavorite);
   }
   toggleFavorite(productId: number): void {
     const product = this.products.find(p => p.id === productId);

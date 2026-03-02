@@ -101,3 +101,9 @@ filterGroup.addEventListener("click", function (event) {
     setActiveFilterButton(filter);
     applyFilter(filter);
 });
+
+const json = '{"users":[{"age":18},{"age":21},{"age":16}]}';
+const obj = JSON.parse(json)
+let morethan18 = obj.users.filter(function (user){
+    return user.age >= 18;
+})

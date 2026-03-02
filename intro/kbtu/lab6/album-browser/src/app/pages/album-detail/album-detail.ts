@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -6,11 +6,10 @@ import { AlbumService } from '../../services/album';
 import { Album } from '../../models/album.model';
 
 @Component({
-  selector: 'app-album-detail',
   standalone: true,
   imports: [RouterLink, FormsModule],
   templateUrl: './album-detail.html',
-  styleUrl: './album-detail.css',
+  styleUrl: './album-detail.css'
 })
 export class AlbumDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
@@ -20,15 +19,12 @@ export class AlbumDetailComponent implements OnInit {
   album = signal<Album | null>(null);
   loading = signal(true);
   error = signal('');
+  saving = signal(false);
 
-  editedTitle = signal('');   // ✅ отдельно храним title
+  editedTitle = signal('');
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.loading.set(true);
-    this.error.set('');
-    this.album.set(null);
 
     this.albumService.getAlbum(id).subscribe({
       next: (a) => {
@@ -39,7 +35,7 @@ export class AlbumDetailComponent implements OnInit {
       error: () => {
         this.error.set('Failed to load album');
         this.loading.set(false);
-      },
+      }
     });
   }
 
@@ -53,16 +49,21 @@ export class AlbumDetailComponent implements OnInit {
       return;
     }
 
-    const updated: Album = { ...current, title };
+    this.saving.set(true);
+    this.error.set('');
 
-    this.albumService.updateAlbum(updated).subscribe({
+    const updatedAlbum: Album = { ...current, title };
+
+    this.albumService.updateAlbum(updatedAlbum).subscribe({
       next: (resp) => {
-        this.album.set(resp);
-        this.editedTitle.set(resp.title);
+        this.album.set({ ...resp, title });
+        this.editedTitle.set(title);
+        this.saving.set(false);
       },
       error: () => {
         this.error.set('Failed to update album');
-      },
+        this.saving.set(false);
+      }
     });
   }
 

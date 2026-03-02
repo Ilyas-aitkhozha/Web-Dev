@@ -5,6 +5,7 @@ import { AboutComponent } from './pages/about/about';
 import { AlbumsComponent } from './pages/albums/albums';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail';
 import { AlbumPhotosComponent } from './pages/album-photos/album-photos';
+import { AlbumCreateComponent } from './pages/album-create/album-create';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
 
   { path: 'albums', component: AlbumsComponent },
+  { path: 'albums/new', component: AlbumCreateComponent },
   { path: 'albums/:id', component: AlbumDetailComponent },
   { path: 'albums/:id/photos', component: AlbumPhotosComponent },
 

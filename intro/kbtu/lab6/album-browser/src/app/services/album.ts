@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { Album } from '../models/album.model';
 import { Photo } from '../models/photo.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlbumService {
-  private readonly baseUrl = 'https://jsonplaceholder.typicode.com';
+  private baseUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(private http: HttpClient) {}
 

@@ -1,28 +1,29 @@
 <h1>Albums</h1>
 
-@if (loading) {
+@if (loading()) {
   <div class="info">Loading albums...</div>
-}
+} @else {
+  @if (error()) {
+    <div class="error">{{ error() }}</div>
+  }
 
-@if (error) {
-  <div class="error">{{ error }}</div>
-}
+  @if (!error() && albums().length === 0) {
+    <div class="info">No albums found.</div>
+  }
 
-@if (!loading && albums.length === 0) {
-  <div class="info">No albums found.</div>
-}
+  @if (albums().length > 0) {
+    <div class="list">
+      @for (album of albums(); track album.id) {
+        <div class="item">
+          <a class="link" [routerLink]="['/albums', album.id]">
+            {{ album.id }} - {{ album.title }}
+          </a>
 
-@if (!loading && albums.length > 0) {
-  <ul class="list">
-    @for (a of albums; track a.id) {
-      <li class="item" [routerLink]="['/albums', a.id]">
-        <div class="text">
-          <div class="id">#{{ a.id }}</div>
-          <div class="title">{{ a.title }}</div>
+          <button class="danger" (click)="deleteAlbum(album.id, $event)">
+            Delete
+          </button>
         </div>
-
-        <button (click)="deleteAlbum(a.id, $event)">Delete</button>
-      </li>
-    }
-  </ul>
+      }
+    </div>
+  }
 }

@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Photo } from '../../models/photo.model';
 import { AlbumService } from '../../services/album';
+import { Photo } from '../../models/photo.model';
 
 @Component({
-  selector: 'app-album-photos',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  selector: 'app-album-photos',
   templateUrl: './album-photos.html',
   styleUrl: './album-photos.css',
 })
 export class AlbumPhotosComponent implements OnInit {
-  albumId = 0;
-  photos: Photo[] = [];
-  loading = false;
-  error = '';
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private albumService = inject(AlbumService);
 
-  constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
+  albumId = signal<number>(0);
+  photos = signal<Photo[]>([]);
+  loading = signal(true);
+  error = signal('');
 
   ngOnInit(): void {
-    this.albumId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadPhotos();
-  }
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.albumId.set(id);
 
-  loadPhotos(): void {
-    this.loading = true;
-    this.error = '';
+    this.loading.set(true);
+    this.error.set('');
 
-    this.albumService.getAlbumPhotos(this.albumId).subscribe({
+    this.albumService.getAlbumPhotos(id).subscribe({
       next: (data) => {
-        this.photos = data;
-        this.loading = false;
+        this.photos.set(data);
+        this.loading.set(false);
       },
       error: () => {
-        this.error = 'Failed to load photos';
-        this.loading = false;
+        this.error.set('Failed to load photos');
+        this.loading.set(false);
       },
     });
+  }
+
+  back(): void {
+    this.router.navigate(['/albums', this.albumId()]);
   }
 }

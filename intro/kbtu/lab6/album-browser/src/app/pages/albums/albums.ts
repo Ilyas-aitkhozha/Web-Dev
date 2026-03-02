@@ -1,53 +1,49 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { Album } from '../../models/album.model';
 import { AlbumService } from '../../services/album';
+import { Album } from '../../models/album.model';
 
 @Component({
-  standalone: true,
   selector: 'app-albums',
-  imports: [CommonModule, RouterLink],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './albums.html',
   styleUrl: './albums.css',
 })
 export class AlbumsComponent implements OnInit {
-  albums: Album[] = [];
-  loading = false;
-  error = '';
+  albums = signal<Album[]>([]);
+  loading = signal(true);
+  error = signal('');
 
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
-    this.fetchAlbums();
-  }
-
-  fetchAlbums(): void {
-    this.loading = true;
-    this.error = '';
+    this.loading.set(true);
+    this.error.set('');
 
     this.albumService.getAlbums().subscribe({
       next: (data) => {
-        this.albums = data;
-        this.loading = false;
+        this.albums.set(data);
+        this.loading.set(false);
       },
       error: () => {
-        this.error = 'Failed to load albums.';
-        this.loading = false;
+        this.error.set('Failed to load albums');
+        this.loading.set(false);
       },
     });
   }
 
   deleteAlbum(id: number, event: MouseEvent): void {
+    event.preventDefault();
     event.stopPropagation();
 
     this.albumService.deleteAlbum(id).subscribe({
       next: () => {
-        this.albums = this.albums.filter(a => a.id !== id);
+        this.albums.set(this.albums().filter(a => a.id !== id));
       },
       error: () => {
-        this.error = 'Delete failed.';
+        this.error.set('Failed to delete album');
       },
     });
   }

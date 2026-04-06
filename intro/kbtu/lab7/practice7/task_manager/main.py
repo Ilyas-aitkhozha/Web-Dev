@@ -20,7 +20,7 @@ def show_tasks(manager):
     else:
         print("\nYour tasks:")
         for task in tasks:
-            1print(task)
+            print(task)
 
 
 def add_task(manager):

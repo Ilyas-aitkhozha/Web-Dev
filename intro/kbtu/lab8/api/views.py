@@ -25,6 +25,16 @@ def category_to_dict(category):
 @require_GET
 def products_list(request):
     products = Product.objects.all()
+    category_id = request.GET.get("category")
+    active = request.GET.get("active")
+    search = request.GET.get("search")
+    if category_id:
+        products = products.filter(category_id=category_id)
+    if active is not None:
+        products = products.filter(is_active=active.lower() == "true")
+    if search:
+        products = products.filter(name__icontains=search)
+
     return JsonResponse([product_to_dict(p) for p in products], safe=False)
 
 

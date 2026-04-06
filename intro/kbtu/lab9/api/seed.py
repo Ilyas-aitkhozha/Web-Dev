@@ -1,0 +1,48 @@
+import os, sys, django
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shop_back.settings')
+django.setup()
+
+from api.models import Category, Product
+
+Category.objects.all().delete()
+Product.objects.all().delete()
+
+cats = {
+    1: Category.objects.create(name='Smartphones'),
+    2: Category.objects.create(name='Laptops'),
+    3: Category.objects.create(name='Accessories'),
+    4: Category.objects.create(name='Gaming Consoles'),
+}
+
+products = [
+    dict(id=1,categoryId=1,likes=0,name='iPhone 17 Pro',price=797374,rating=5,description='Смартфон Apple iPhone 17 Pro 256Gb оранжевый',image='https://resources.cdn-kaspi.kz/img/m/p/p18/p96/64168413.png?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p18/p96/64168413.png?format=gallery-medium','https://resources.cdn-kaspi.kz/img/m/p/p29/p1e/64464409.jpg?format=gallery-medium','https://resources.cdn-kaspi.kz/img/m/p/pfc/p95/64168414.png?format=gallery-medium','https://resources.cdn-kaspi.kz/img/m/p/pc3/p95/64168416.png?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-iphone-17-pro-256gb-oranzhevyi-145467625/?c=750000000'),
+    dict(id=2,categoryId=1,likes=0,name='iPhone 15',price=399863,rating=5,description='Смартфон Apple iPhone 15 128Gb черный',image='https://resources.cdn-kaspi.kz/img/m/p/h1d/hfc/86303745998878.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/h1d/hfc/86303745998878.jpg?format=gallery-medium','https://resources.cdn-kaspi.kz/img/m/p/h65/h81/86275143532574.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-iphone-15-128gb-chernyi-113137790/?c=750000000'),
+    dict(id=3,categoryId=1,likes=0,name='iPhone 13',price=295002,rating=4,description='Смартфон Apple iPhone 13 128Gb черный',image='https://resources.cdn-kaspi.kz/img/m/p/h32/h70/84378448199710.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/h32/h70/84378448199710.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-iphone-13-128gb-chernyi-102298404/?c=750000000'),
+    dict(id=4,categoryId=1,likes=0,name='Samsung Galaxy A07',price=68666,rating=4,description='Смартфон Samsung Galaxy A07 6 ГБ/128 ГБ черный',image='https://resources.cdn-kaspi.kz/img/m/p/p3d/pda/61291251.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p3d/pda/61291251.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/samsung-galaxy-a07-6-gb-128-gb-chernyi-144817763/?c=750000000'),
+    dict(id=5,categoryId=1,likes=0,name='iPhone 17 Pro Max',price=893438,rating=5,description='Смартфон Apple iPhone 17 Pro Max 256Gb серебристый',image='https://resources.cdn-kaspi.kz/img/m/p/p72/p55/64169948.png?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p72/p55/64169948.png?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-iphone-17-pro-max-256gb-serebristyi-145468150/?c=750000000'),
+    dict(id=6,categoryId=2,likes=0,name='MacBook Air 13 2025',price=524993,rating=4.9,description='Ноутбук Apple MacBook Air 13 2025 / 16 Гб / SSD 256 Гб / macOS / MW123',image='https://resources.cdn-kaspi.kz/img/m/p/pab/pc3/35723922.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/pab/pc3/35723922.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-macbook-air-13-2025-16-gb-ssd-256-gb-macos-mw123-137582956/?c=750000000'),
+    dict(id=7,categoryId=2,likes=0,name='MacBook Pro 16 2024',price=1324274,rating=4,description='Ноутбук Apple MacBook Pro 16 2024',image='https://resources.cdn-kaspi.kz/img/m/p/pa1/pce/15484955.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/pa1/pce/15484955.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-macbook-pro-16-2024-16-2-24-gb-ssd-512-gb-macos-mx2x3-137245155/?c=750000000'),
+    dict(id=8,categoryId=2,likes=0,name='Huawei MateBook X Pro',price=1328888,rating=4,description='Ноутбук Huawei MateBook X Pro VGHH-X',image='https://resources.cdn-kaspi.kz/img/m/p/p83/p7b/1385490.png?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p83/p7b/1385490.png?format=gallery-medium'],link='https://kaspi.kz/shop/p/huawei-matebook-x-pro-vghh-x-14-2-16-gb-ssd-1000-gb-win-11-53014aux-128092311/?c=750000000'),
+    dict(id=9,categoryId=2,likes=0,name='Huawei MateBook 14',price=728888,rating=5,description='Ноутбук Huawei MateBook 14',image='https://resources.cdn-kaspi.kz/img/m/p/p93/p22/21715704.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p93/p22/21715704.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/huawei-matebook-14-flemingh-w7611t-14-2-16-gb-ssd-1000-gb-win-11-53014ark-133844984/?c=750000000'),
+    dict(id=10,categoryId=2,likes=0,name='ASUS ProArt P16',price=3190000,rating=0,description='Ноутбук ASUS ProArt P16 16\"',image='https://resources.cdn-kaspi.kz/img/m/p/pec/p77/56630243.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/pec/p77/56630243.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/asus-proart-p16-16-64-gb-ssd-2000-gb-win-11-pro-90nb15k1-m00180-143543577/?c=750000000'),
+    dict(id=11,categoryId=3,likes=0,name='Apple 20W',price=2864,rating=4.8,description='Зарядное устройство Apple 20W USB-C',image='https://resources.cdn-kaspi.kz/img/m/p/h95/h0e/63961934823454.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/h95/h0e/63961934823454.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/apple-20w-usb-c-power-adapter-belyi-100984093/?c=750000000'),
+    dict(id=12,categoryId=3,likes=0,name='Xiaomi Power Bank',price=4098,rating=4.2,description='Внешний аккумулятор Xiaomi Redmi Power Bank 20000 мАч',image='https://resources.cdn-kaspi.kz/img/m/p/h34/h07/63928978014238.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/h34/h07/63928978014238.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/vneshnii-akkumuljator-xiaomi-redmi-power-bank-20000-mach-18-vt-chernyi-100322086/?c=750000000'),
+    dict(id=13,categoryId=3,likes=0,name='Чехол для Apple iPhone 11',price=314,rating=5,description='Чехол для Apple iPhone 11 рисунок',image='https://resources.cdn-kaspi.kz/img/m/p/p33/pdc/92240573.bin?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/p33/pdc/92240573.bin?format=gallery-medium'],link='https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-11-risunok-130003996/?c=750000000'),
+    dict(id=14,categoryId=3,likes=0,name='Чехол для Apple iPhone 15 Pro',price=596,rating=5,description='Чехол для Apple iPhone 15 Pro c рисунком',image='https://basket-16.wbbasket.ru/vol2545/part254534/254534173/images/c516x688/1.webp',images=['https://basket-16.wbbasket.ru/vol2545/part254534/254534173/images/c516x688/1.webp'],link='https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-15-pro-chernyi-117327113/?c=750000000'),
+    dict(id=15,categoryId=3,likes=0,name='Чехол для Apple iPhone 16 Pro',price=765,rating=4.9,description='Чехол для Apple iPhone 16 Pro с рисунком',image='https://basket-17.wbbasket.ru/vol2693/part269352/269352805/images/big/1.webp',images=['https://basket-17.wbbasket.ru/vol2693/part269352/269352805/images/big/1.webp'],link='https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-15-pro-chernyi-117327113/?c=750000000'),
+    dict(id=16,categoryId=4,likes=0,name='Sony PlayStation 5 Slim',price=300496,rating=5,description='Игровая приставка Sony PlayStation 5 Slim',image='https://resources.cdn-kaspi.kz/img/m/p/hf1/h03/84526695677982.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/hf1/h03/84526695677982.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/sony-playstation-5-slim-114696098/?c=750000000'),
+    dict(id=17,categoryId=4,likes=0,name='Valve Steam Deck',price=354816,rating=5,description='Игровая приставка Valve Steam Deck OLED 512 Гб',image='https://resources.cdn-kaspi.kz/img/m/p/pa0/p16/15844428.png?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/pa0/p16/15844428.png?format=gallery-medium'],link='https://kaspi.kz/shop/p/valve-steam-deck-oled-512-gb-115001687/?c=750000000'),
+    dict(id=18,categoryId=4,likes=0,name='Nintendo Switch 2',price=270000,rating=5,description='Игровая приставка Nintendo Switch 2',image='https://resources.cdn-kaspi.kz/img/m/p/pf1/p4a/46635546.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/pf1/p4a/46635546.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/nintendo-switch-2-140718258/?c=750000000'),
+    dict(id=19,categoryId=4,likes=0,name='Nintendo Switch Lite',price=109898,rating=5,description='Игровая приставка Nintendo Switch Lite серый',image='https://resources.cdn-kaspi.kz/img/m/p/he8/hd2/63833068044318.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/he8/hd2/63833068044318.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/nintendo-switch-lite-seryi-4100377/?c=750000000'),
+    dict(id=20,categoryId=4,likes=0,name='Xbox Series X',price=415022,rating=5,description='Игровая приставка Xbox Series X 1TB черный',image='https://resources.cdn-kaspi.kz/img/m/p/h26/ha1/63982141407262.jpg?format=gallery-medium',images=['https://resources.cdn-kaspi.kz/img/m/p/h26/ha1/63982141407262.jpg?format=gallery-medium'],link='https://kaspi.kz/shop/p/xbox-series-x-1tb-chernyi-100824897/?c=750000000'),
+]
+
+for p in products:
+    Product.objects.create(
+        name=p['name'], price=p['price'], description=p['description'],
+        count=10, is_active=True, category=cats[p['categoryId']],
+        likes=p['likes'], image=p['image'], images=p['images'],
+        link=p['link'], rating=p['rating'], is_favourite=False
+    )
+

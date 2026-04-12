@@ -5,12 +5,9 @@ from ..models import Product
 from ..serializers import ProductSerializer
 
 
-class ProductListAPIView(mixins.ListModelMixin,
-                         mixins.CreateModelMixin,
-                         GenericAPIView):
+class ProductListAPIView(mixins.ListModelMixin, mixins.CreateModelMixin,GenericAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -18,10 +15,7 @@ class ProductListAPIView(mixins.ListModelMixin,
         return self.create(request, *args, **kwargs)
 
 
-class ProductDetailAPIView(mixins.RetrieveModelMixin,
-                           mixins.UpdateModelMixin,
-                           mixins.DestroyModelMixin,
-                           GenericAPIView):
+class ProductDetailAPIView(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,GenericAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'product_id'

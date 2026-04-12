@@ -1,0 +1,37 @@
+import django.db.models.deletion
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = []
+
+    operations = [
+        migrations.CreateModel(
+            name='Category',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=255)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Product',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=255)),
+                ('price', models.FloatField()),
+                ('description', models.TextField()),
+                ('count', models.IntegerField(default=0)),
+                ('is_active', models.BooleanField(default=True)),
+                ('likes', models.IntegerField(default=0)),
+                ('image', models.URLField(blank=True, max_length=500)),
+                ('images', models.JSONField(default=list)),
+                ('link', models.URLField(blank=True, max_length=500)),
+                ('is_favourite', models.BooleanField(default=False)),
+                ('rating', models.FloatField(default=0)),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='api.category')),
+            ],
+        ),
+    ]
